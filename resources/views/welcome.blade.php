@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contacts-app')
+@section('title', 'Gestor De Tareas App')
 
 @section('content')
 <x-alt>

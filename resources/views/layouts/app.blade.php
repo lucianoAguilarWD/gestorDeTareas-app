@@ -13,7 +13,7 @@
     <header class="bg-white shadow-md">
         <div class="container mx-auto flex justify-between items-center p-4">
             <!-- Logo -->
-            <a href="/" class="text-xl font-bold text-gray-800">Contacts-App</a>
+            <a href="/" class="text-xl font-bold text-gray-800">App</a>
 
             <div x-data="{ open: false }" class="relative inline-block text-left">
                 <!-- Botón para abrir el dropdown -->
