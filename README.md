@@ -20,7 +20,7 @@
 1. Clonar el repositorio:
 
     ```
-    git clone https://github.com/lucianoAguilarWD/contacts-app.git
+    git clone https://github.com/lucianoAguilarWD/gestorDeTareas-app.git
     ```
 
 ### Dentro de la carpeta del proyecto abrir terminal y ejecutar los siguientes comandos
