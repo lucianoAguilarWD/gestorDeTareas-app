@@ -1,0 +1,107 @@
+@import url("./base.css");
+
+body {
+  justify-content: center;
+}
+main {
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.25rem 0 rgba(15, 20, 73, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+main header {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background-color: #1a237e;
+}
+main header h1 {
+  color: #fafafa;
+  font-weight: 700;
+}
+main header h1 span {
+  background-image: linear-gradient(to left, #03a9f4, #00bcd4);
+  background-clip: text;
+  color: transparent;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+main header p {
+  color: #fafafa;
+  font-weight: 400;
+}
+
+main form {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.25rem;
+}
+main form fieldset {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.25rem;
+  align-items: center;
+}
+main form input {
+  flex: 1;
+  outline: none;
+  border-bottom: 0.1rem solid #03a9f4;
+  color: #03a9f4;
+  background-color: transparent;
+  transition: all 300ms ease-in-out;
+  padding: 0.25rem 0.75rem;
+}
+main form input:focus {
+  border-color: transparent;
+  background-color: #03a9f4;
+  color: #fafafa;
+}
+main form button {
+  align-self: center;
+  padding: 0.25rem 1.25rem;
+  background-color: #03a9f4;
+  color: #fafafa;
+  font-size: 1rem;
+  border-radius: 2rem;
+}
+.feedback {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.feedback.error {
+  padding: 0.25rem;
+  background-color: #f44336;
+  color: #fafafa;
+}
+.feedback.success {
+  padding: 0.25rem;
+  background-color: #388e3c;
+  color: #fafafa;
+}
+main > p {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 0.25rem;
+}
+main > p a {
+  padding: 0.25rem 1.25rem;
+  text-align: center;
+  background-color: #03a9f4;
+  color: #fafafa;
+  font-size: 1rem;
+  border-radius: 2rem;
+}
+

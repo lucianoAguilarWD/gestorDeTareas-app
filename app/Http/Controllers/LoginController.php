@@ -48,7 +48,7 @@ class LoginController extends Controller
                 'max:255',
                 Rule::unique('users')->whereNull('deleted_at'),
             ],
-            'password' => ['required', 'min:6'],
+            'password' => ['required', 'min:6', 'confirmed'],
         ]);
         $user = User::where('email', $request->email)->first();
 

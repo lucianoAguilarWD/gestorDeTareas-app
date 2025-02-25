@@ -2,34 +2,61 @@
 @section('title', 'Registrarse')
 
 @section('content')
-<x-main>
-    <x-form>
-        <x-slot name="title">Registrarse</x-slot>
-        <x-slot name="url">register</x-slot>
-        <x-slot name="campos">
-            <div>
-                <label class="block text-gray-700">Nombre</label>
-                <input type="text" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" value="{{ old('name') }}" required>
-                @error('name') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-            </div>
-            <div>
-                <label class="block text-gray-700">Correo Electrónico</label>
-                <input type="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" value="{{ old('email') }}" required>
-                @error('email') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-            </div>
-            <div>
-                <label class="block text-gray-700">Contraseña</label>
-                <input type="password" name="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" required>
-                @error('password') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-            </div>
-        </x-slot>
-        <x-slot name="submit"> Registrarse </x-slot>
-        <x-slot name="agregados">
-            <a href="{{ route('inicia_sesion') }}"
-                class="text-blue-600 hover:text-blue-800 underline font-medium">
-                Loguearse
-            </a>
-        </x-slot>
-    </x-form>
-</x-main>
+
+<main>
+    <header>
+        <h1>Bienvenido a <span>TaskHub</span></h1>
+        <p>Dejanos tus credenciales para poder iniciar sesión</p>
+    </header>
+    <form action="/register" method="post" autocomplete="off" novalidate>
+    @csrf
+        <fieldset>
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" value="{{ old('name') }}"/>
+            @error('name') 
+            <small class="feedback error">
+                {{ $message }}
+            </small> 
+            @enderror
+        </fieldset>
+        <fieldset>
+            <label for="email">Correo</label>
+            <input type="email" id="email" name="email" value="{{ old('email') }}"/>
+            @error('email') 
+            <small class="feedback error">
+                {{ $message }}
+            </small> 
+            @enderror
+            <small class="feedback"></small>
+        </fieldset>
+        <fieldset>
+            <label for="password">Clave</label>
+            <input type="password" id="password" name="password" />
+            <button type="button" id="btnPassword">Mostrar</button>
+            @error('password') 
+            <small class="feedback error">
+                {{ $message }}
+            </small> 
+            @enderror
+            <small class="feedback"></small>
+        </fieldset>
+        <fieldset>
+            <label for="confirm_password">Confirmar Clave</label>
+            <input
+                type="password"
+                id="confirm_password"
+                name="password_confirmation" />
+            <button type="button" id="btnConfirmPassword">Mostrar</button>
+            <small class="feedback"></small>
+            <small class="feedback"></small>
+        </fieldset>
+        <output class="feedback"></output>
+        <output class="feedback"></output>
+        <button type="submit">Guardar Usuario</button>
+    </form>
+    <p>
+        Si ya tienes cuenta, puedes hacer click
+        <a href="{{ route('login') }}">Acá</a>
+    </p>
+</main>
 @endsection

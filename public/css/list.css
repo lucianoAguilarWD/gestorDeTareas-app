@@ -1,0 +1,144 @@
+@import url("./base.css");
+
+body {
+  justify-content: center;
+  padding: 1rem;
+}
+
+main {
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.25rem 0 rgba(15, 20, 73, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+header {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background-color: #1a237e;
+  color: #171414;
+}
+
+header h1 {
+  font-weight: 700;
+}
+
+header h1 span {
+  background-image: linear-gradient(to left, #03a9f4, #00bcd4);
+  background-clip: text;
+  color: transparent;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+#add-task-form,
+#task-filters {
+  width: 100%;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+fieldset {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.5rem;
+  align-items: center;
+  border: none;
+}
+
+input,
+textarea {
+  flex: 1;
+  outline: none;
+  border: 0.1rem solid #03a9f4;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 300ms ease-in-out;
+}
+
+input:focus,
+textarea:focus {
+  border-color: transparent;
+  background-color: #03a9f4;
+  color: #fafafa;
+}
+
+button {
+  align-self: center;
+  padding: 0.5rem 1.5rem;
+  background-color: #03a9f4;
+  color: #fafafa;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0288d1;
+}
+
+#task-list {
+  width: 100%;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 1rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background: #e3f2fd;
+}
+
+dl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+dl dt {
+  font-weight: bold;
+}
+
+.edit-btn {
+  background-color: #ff9800;
+}
+.complete-btn {
+  background-color: #4caf50;
+}
+.delete-btn {
+  background-color: #f44336;
+}
+
+@media (max-width: 768px) {
+  fieldset {
+    flex-direction: column;
+    align-items: center;
+  }
+  li {
+    text-align: center;
+  }
+}
