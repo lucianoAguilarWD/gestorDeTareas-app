@@ -15,25 +15,6 @@
 -   PHP >= 8.2.12
 -   Mysql 8.3
 
-## Requisitos del Servidor
-
-    PHP >= 8.2
-    Ctype PHP Extension
-    cURL PHP Extension
-    DOM PHP Extension
-    Fileinfo PHP Extension
-    Filter PHP Extension
-    Hash PHP Extension
-    Mbstring PHP Extension
-    OpenSSL PHP Extension
-    PCRE PHP Extension
-    PDO PHP Extension
-    Session PHP Extension
-    Tokenizer PHP Extension
-    XML PHP Extension
-
-
-
 ## Instalación
 
 1. Clonar el repositorio:
