@@ -59,7 +59,9 @@
 ## Uso
 
 Después de la instalación, puedes acceder al sistema a través del link que da artisan serve.
-
+    ```
+        http://localhost/gestorDeTareas-app/public/
+    ```
   * Puede probar los distintos roles usando las siguientes cuentas:
   
     -   usuario@usuario.com || pw: usuario123 || rol: usuario
