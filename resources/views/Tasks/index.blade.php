@@ -125,14 +125,22 @@
                                 </span>
                             </dd>
                         </dl>
-
-                        <div class="task-card-actions">
-                            <button type="button" class="edit-btn btn">Editar</button>
-                            <button type="button" class="complete-btn btn">
-                                Marcar como Completada
+                    </div>
+                    <div class="task-card-actions">
+                        <button type="button" class="edit-btn btn">Editar</button>
+                        <button type="button" class="complete-btn btn">
+                            Marcar como Completada
+                        </button>
+                        @if(Auth::id() == $task->usuario_id)
+                        <form action="{{ route('delete_tarea', $task->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete-btn btn" onclick="return confirm('¿Estás seguro de eliminar esta tarea?')">
+                                Eliminar
                             </button>
-                            <button type="button" class="delete-btn btn">Eliminar</button>
-                        </div>
+                        </form>
+                        @endif
+                        
                     </div>
                 </li>
             </ul>
