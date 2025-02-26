@@ -21,21 +21,22 @@
                     <strong>Buscar por estado:</strong>
                 </legend>
                 <div class="radio-group">
-                    <input type="radio" id="all" name="estado" value=""  onchange="this.form.submit()" />
-                    <label for="">Todas</label>
-                    <input
-                        type="radio"
-                        id="pendientes"
-                        name="estado"
-                        value="pendientes" onchange="this.form.submit()"  />
+                    <input type="radio" id="all" name="estado" value=""
+                        {{ request('estado') == '' ? 'checked' : '' }}
+                        onchange="this.form.submit()" />
+                    <label for="all">Todas</label>
+
+                    <input type="radio" id="pendientes" name="estado" value="pendientes"
+                        {{ request('estado') == 'pendientes' ? 'checked' : '' }}
+                        onchange="this.form.submit()" />
                     <label for="pendientes">Pendientes</label>
-                    <input
-                        type="radio"
-                        id="completadas"
-                        name="estado"
-                        value="completadas" onchange="this.form.submit()"  />
+
+                    <input type="radio" id="completadas" name="estado" value="completadas"
+                        {{ request('estado') == 'completadas' ? 'checked' : '' }}
+                        onchange="this.form.submit()" />
                     <label for="completadas">Completadas</label>
                 </div>
+
             </div>
             <div class="form-group">
                 <legend class="group-title">
