@@ -4,6 +4,7 @@ use App\Http\Controllers\GestorDeTareasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FiltersController;
 
 Route::middleware("auth")->group(function () {
     // rutas de perfil
@@ -15,6 +16,8 @@ Route::middleware("auth")->group(function () {
     Route::post('/postCreateTarea', [GestorDeTareasController::class, 'store'])->name('create_tarea');
     Route::delete('/deleteTarea/{id}', [GestorDeTareasController::class, 'destroy'])->name('delete_tarea');
     Route::put('/updateTarea/{id}', [GestorDeTareasController::class, 'update'])->name('update_tarea');
+    Route::get('/', [HomeController::class, 'index'])->name('tasks.index');
+    //Route::get('/', [FiltersController::class, 'index'])->name('tasks.index');
 });
 
 // rutas de login

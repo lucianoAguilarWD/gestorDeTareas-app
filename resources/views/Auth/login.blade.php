@@ -3,30 +3,37 @@
 @section('title', 'Inicio de Sesión')
 
 @section('content')
-<x-main>
-    <x-form>
-        <x-slot name="title">Iniciar Sesión</x-slot>
-        <x-slot name="url">login</x-slot>
-        <x-slot name="campos">
-            <div>
-                <label class="block text-gray-700">Correo Electrónico</label>
-                <input type="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" value="{{ old('email') }}" required>
-                @error('email') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-            </div>
-            <div>
-                <label class="block text-gray-700">Contraseña</label>
-                <input type="password" name="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"  required>
-                @error('password') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-            </div>
-        </x-slot>
-        <x-slot name="submit"> Iniciar Sesión </x-slot>
-        <x-slot name="agregados">
-            <a href="{{ route('register') }}"
-                class="text-blue-600 hover:text-blue-800 underline font-medium">
-                Registrarse
-            </a>
-        </x-slot>
 
-    </x-form>
-</x-main>
+    <main>
+      <header>
+        <h1>Bienvenido a <span>TaskHub</span></h1>
+        <p>Ingresa tus credenciales para poder iniciar sesión</p>
+      </header>
+      <form action="/login" method="post">
+      @csrf
+        <fieldset>
+          <label for="email">Correo</label>
+          <input type="email" id="email" name="email" required />
+          <small class="feedback"></small>
+          <small class="feedback"></small>
+          @error('email') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
+        </fieldset>
+        <fieldset>
+          <label for="password">Clave</label>
+          <input type="password" id="password" name="password" />
+          <button type="button" id="btnPassword">Mostrar</button>
+          <small class="feedback"></small>
+          <small class="feedback"></small>
+          @error('password') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
+        </fieldset>
+        <output class="feedback"></output>
+        <output class="feedback"></output>
+        <button type="submit">Ingresar</button>
+      </form>
+      <p>
+        Si no tienes cuenta, puedes hacer click
+        <a href="{{ route('register') }}">Acá</a>
+      </p>
+    </main>
+
 @endsection
