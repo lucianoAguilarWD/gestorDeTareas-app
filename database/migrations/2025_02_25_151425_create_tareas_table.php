@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('tareas', function (Blueprint $table) {
             $table->id();
             $table->string('titulo', length: 100);
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->date('fechaVencimiento');
-            $table->enum('estado', ['completadas', 'pendientes']);
+            $table->enum('estado', ['completada', 'pendiente']);
             $table->enum('prioridad', ['baja', 'media', 'alta']);
             $table->unsignedBigInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('users');
