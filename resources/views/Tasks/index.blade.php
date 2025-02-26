@@ -27,13 +27,13 @@
                         type="radio"
                         id="pendientes"
                         name="estado"
-                        value="pendientes" onchange="this.form.submit()"  />
+                        value="pendiente" onchange="this.form.submit()"  />
                     <label for="pendientes">Pendientes</label>
                     <input
                         type="radio"
                         id="completadas"
                         name="estado"
-                        value="completadas" onchange="this.form.submit()"  />
+                        value="completada" onchange="this.form.submit()"  />
                     <label for="completadas">Completadas</label>
                 </div>
             </div>
@@ -82,8 +82,8 @@
     <!-- Lista de Tareas -->
     <section id="task-list">
         <h2 class="section-title">Lista de Tareas</h2>
-        <div class="create-task-btn">
-            <a href="create.html" class="btn btn-primary"> Crear Nueva Tarea </a>
+        <div>
+            <a href="{{route('viewCrearTarea')}}" style="background-color: rgb(3, 148, 148); color: white; padding: 5px; border-radius: 4px"> Crear Nueva Tarea </a>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @forelse($tasks as $task)
