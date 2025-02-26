@@ -48,7 +48,7 @@
         <h1>Crea tu nueva tarea en <span>TaskHub</span></h1>
         <p>Rellena el formulario para crear tus tareas</p>
       </header>
-      <form action="postCreateTarea" method="post">
+      <form action="{{route('create_tarea')}}" method="post">
         @csrf
         <fieldset>
           <label for="titulo">Titulo *</label>
@@ -108,7 +108,7 @@
       </form>
       <p>
         Para volver a la lista de tareas, hace click
-        <a href="#">Acá</a>
+        <a href="{{url()->previous()}}">Acá</a>
       </p>
     </main>
   </body>

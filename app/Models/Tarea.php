@@ -9,8 +9,8 @@ class Tarea extends Model
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
-    const COMPLETA = 'completadas';
-    const PENDIENTE = 'pendientes';
+    const COMPLETA = 'completada';
+    const PENDIENTE = 'pendiente';
     const BAJA = 'baja';
     const MEDIA = 'media';
     const ALTA = 'alta';
