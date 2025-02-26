@@ -9,7 +9,7 @@ use App\Http\Controllers\FiltersController;
 Route::middleware("auth")->group(function () {
 
     //rutas CRUD de tareas
-    Route::view('/crearTarea', 'createTareas');
+    Route::view('/crearTarea', 'createTareas')->name('viewCrearTarea');
     Route::get('editarTarea/{id}', [GestorDeTareasController::class, 'edit'])->name('edit_tarea');
     Route::post('/postCreateTarea', [GestorDeTareasController::class, 'store'])->name('create_tarea');
     Route::delete('/deleteTarea/{id}', [GestorDeTareasController::class, 'destroy'])->name('delete_tarea');
