@@ -1,0 +1,163 @@
+@import url("./base.css");
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.25rem 0 rgba(15, 20, 73, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 600px;
+  width: 100%;
+  background-color: #fff;
+}
+
+main header {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background-color: #1a237e;
+  text-align: center;
+}
+
+main header h1 {
+  color: #fafafa;
+  font-weight: 700;
+  margin: 0;
+}
+
+main header h1 span {
+  background-image: linear-gradient(to left, #03a9f4, #00bcd4);
+  background-clip: text;
+  color: transparent;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+main header p {
+  color: #fafafa;
+  font-weight: 400;
+  margin: 0;
+}
+
+main form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+main form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: none;
+}
+
+main form label {
+  font-weight: 600;
+  color: #1a237e;
+}
+
+main form input,
+main form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 0.1rem solid #03a9f4;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+
+main form input:focus,
+main form textarea:focus {
+  border-color: #0288d1;
+}
+
+main form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+main form input[type="radio"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+main form legend {
+  font-weight: 600;
+  color: #1a237e;
+}
+
+main form button {
+  align-self: center;
+  padding: 0.5rem 1.5rem;
+  background-color: #03a9f4;
+  color: #fafafa;
+  font-size: 1rem;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+main form button:hover {
+  background-color: #0288d1;
+}
+
+.feedback {
+  width: 100%;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.feedback.error {
+  background-color: #f44336;
+  color: #fafafa;
+}
+
+.feedback.success {
+  background-color: #388e3c;
+  color: #fafafa;
+}
+
+main > p {
+  text-align: center;
+}
+
+main > p a {
+  color: #03a9f4;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+main > p a:hover {
+  color: #0288d1;
+}
+
+@media (max-width: 1280px) {
+  body {
+    padding: 1rem;
+  }
+  main {
+    max-width: 100%;
+  }
+}

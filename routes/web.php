@@ -11,8 +11,10 @@ Route::middleware("auth")->group(function () {
 
     //rutas CRUD de tareas
     Route::view('/crearTarea', 'createTareas');
+    Route::get('editarTarea/{id}', [GestorDeTareasController::class, 'edit'])->name('edit_tarea');
     Route::post('/postCreateTarea', [GestorDeTareasController::class, 'store'])->name('create_tarea');
-
+    Route::delete('/deleteTarea/{id}', [GestorDeTareasController::class, 'destroy'])->name('delete_tarea');
+    Route::put('/updateTarea/{id}', [GestorDeTareasController::class, 'update'])->name('update_tarea');
 });
 
 // rutas de login

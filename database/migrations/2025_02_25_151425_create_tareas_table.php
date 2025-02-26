@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('titulo', length: 100);
             $table->text('descripcion')->nullable();
             $table->date('fechaVencimiento');
-            $table->enum('estado', ['completada', 'pendiente']);
+            $table->enum('estado', ['completada', 'pendiente'])->default('pendiente');
             $table->enum('prioridad', ['baja', 'media', 'alta']);
             $table->unsignedBigInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('users');
