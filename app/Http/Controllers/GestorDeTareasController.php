@@ -25,6 +25,7 @@ class GestorDeTareasController extends Controller
             $tarea->prioridad = $request->prioridad;
             $tarea->usuario_id = Auth::id();
             $tarea->save();
+            return redirect()->route('/');
     }
 
 
