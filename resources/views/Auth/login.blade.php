@@ -9,11 +9,11 @@
         <h1>Bienvenido a <span>TaskHub</span></h1>
         <p>Ingresa tus credenciales para poder iniciar sesión</p>
       </header>
-      <form action="/login" method="post">
+      <form action="/login" method="post" novalidate>
       @csrf
         <fieldset>
           <label for="email">Correo</label>
-          <input type="email" id="email" name="email" required />
+          <input type="email" id="email" name="email" value="{{ old('email') }}" required />
           <small class="feedback"></small>
           <small class="feedback"></small>
           @error('email') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
@@ -35,5 +35,16 @@
         <a href="{{ route('register') }}">Acá</a>
       </p>
     </main>
+  <script>
+    const btnPassword = document.getElementById('btnPassword');
+    const passwordInput = document.getElementById('password');
 
+    btnPassword.addEventListener('click', () => {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+      } else {
+        passwordInput.type = 'password';
+      }
+    });
+  </script>
 @endsection

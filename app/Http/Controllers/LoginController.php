@@ -29,7 +29,7 @@ class LoginController extends Controller
         //Si los datos son correctos
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate(); //prepara la sesión
-            return redirect()->route('home')->with('message', 'Login exitoso'); //redirecciona a la página principal
+            return redirect()->route('tasks.index')->with('message', 'Login exitoso'); //redirecciona a la página principal
         }
 
         //Si la contraseña no es correcta, regresa al login con un mensaje de error
@@ -66,7 +66,7 @@ class LoginController extends Controller
     
         //Autentica al usuario y redirecciona a la página principal
         Auth::login($user);
-        return redirect()->route('home')->with('message', 'Login exitoso');
+        return redirect()->route('tasks.index')->with('message', 'Login exitoso');
     }
 
     public function logout(Request $request)

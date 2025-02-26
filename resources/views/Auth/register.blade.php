@@ -59,4 +59,17 @@
         <a href="{{ route('login') }}">Acá</a>
     </p>
 </main>
+<script>
+    const btnPassword = document.getElementById('btnPassword');
+    const passwordInput = document.getElementById('password');
+    btnPassword.addEventListener('click', () => {
+        passwordInput.type = passwordInput.type === 'password'? 'text' : 'password';
+    });
+
+    const btnConfirmPassword = document.getElementById('btnConfirmPassword');
+    const confirmPasswordInput = document.getElementById('confirm_password');
+    btnConfirmPassword.addEventListener('click', () => {
+        confirmPasswordInput.type = confirmPasswordInput.type === 'password'? 'text' : 'password';
+    });
+</script>
 @endsection

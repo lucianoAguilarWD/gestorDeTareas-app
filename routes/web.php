@@ -7,8 +7,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FiltersController;
 
 Route::middleware("auth")->group(function () {
-    // rutas de perfil
-    Route::get('/', [HomeController::class, 'index'])->name('home');
 
     //rutas CRUD de tareas
     Route::view('/crearTarea', 'createTareas');
@@ -17,7 +15,6 @@ Route::middleware("auth")->group(function () {
     Route::delete('/deleteTarea/{id}', [GestorDeTareasController::class, 'destroy'])->name('delete_tarea');
     Route::put('/updateTarea/{id}', [GestorDeTareasController::class, 'update'])->name('update_tarea');
     Route::get('/', [HomeController::class, 'index'])->name('tasks.index');
-    //Route::get('/', [FiltersController::class, 'index'])->name('tasks.index');
 });
 
 // rutas de login
