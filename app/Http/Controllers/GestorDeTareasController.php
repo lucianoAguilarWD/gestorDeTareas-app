@@ -33,9 +33,9 @@ class GestorDeTareasController extends Controller
         $tarea = $tareaModel->find($id);
         if($tarea->usuario_id == Auth::id()){
             $tarea->delete();
-            return to_route('home');
+            return back();
         }else{
-            return to_route('home');
+            return back();
         }
     }
 

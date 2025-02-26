@@ -129,7 +129,16 @@
                         <button type="button" class="complete-btn btn">
                             Marcar como Completada
                         </button>
-                        <button type="button" class="delete-btn btn">Eliminar</button>
+                        @if(Auth::id() == $task->usuario_id)
+                        <form action="{{ route('delete_tarea', $task->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete-btn btn" onclick="return confirm('¿Estás seguro de eliminar esta tarea?')">
+                                Eliminar
+                            </button>
+                        </form>
+                        @endif
+                        
                     </div>
                 </li>
             </ul>
