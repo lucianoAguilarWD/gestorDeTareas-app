@@ -21,10 +21,10 @@ class Tarea extends Model
         'fechaVencimiento',
         'estado',
         'prioridad',
-    ]; 
+    ];
 
     public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class, 'usuario_id');
     }
 }

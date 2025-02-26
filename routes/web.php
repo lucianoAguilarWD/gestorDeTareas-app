@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FiltersController;
 
 Route::middleware("auth")->group(function () {
     // rutas de perfil
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('tasks.index');
+    //Route::get('/', [FiltersController::class, 'index'])->name('tasks.index');
 });
 
 // rutas de login
