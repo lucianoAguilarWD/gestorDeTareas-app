@@ -105,3 +105,16 @@ main > p a {
   border-radius: 2rem;
 }
 
+@media (max-width: 1280px) {
+  body {
+    padding: 1rem;
+  }
+  main form fieldset {
+    flex-flow: column;
+    align-items: center;
+  }
+  main > p {
+    flex-flow: column;
+    align-items: center;
+  }
+}

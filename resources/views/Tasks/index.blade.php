@@ -3,94 +3,146 @@
 @section('title', 'Gestor De Tareas App')
 
 @section('content')
-<x-alt>
-    <div class="max-w-7xl mx-auto p-6 bg-white shadow rounded-lg">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Lista de Tareas</h2>
-        <form action="{{ route('tasks.index') }}" method="GET">
-            <div>
+<main>
+    <!-- Filtros de Tareas -->
+    <section id="task-filters">
+        <h2 class="section-title">Filtrar Tareas</h2>
+        <div class="form-group">
+            <form action="{{ route('tasks.index') }}" method="GET">
+                <label for="keyword">Buscar por título</label>
                 <input type="text" name="query" placeholder="Buscar..." value="{{ request('query') }}">
                 <button type="submit">Buscar</button>
+            </form>
+        </div>
+        <form action="{{ route('tasks.index') }}" method="GET" id="filter-form">
+
+            <div class="form-group">
+                <legend class="group-title">
+                    <strong>Buscar por estado:</strong>
+                </legend>
+                <div class="radio-group">
+                    <input type="radio" id="all" name="estado" value="" checked onchange="this.form.submit()" />
+                    <label for="">Todas</label>
+                    <input
+                        type="radio"
+                        id="pendientes"
+                        name="estado"
+                        value="pendientes" onchange="this.form.submit()" />
+                    <label for="pendientes">Pendientes</label>
+                    <input
+                        type="radio"
+                        id="completadas"
+                        name="estado"
+                        value="completadas" onchange="this.form.submit()" />
+                    <label for="completadas">Completadas</label>
+                </div>
             </div>
+            <div class="form-group">
+                <legend class="group-title">
+                    <strong>Buscar por prioridad:</strong>
+                </legend>
+                <select
+                    id="priority-filter"
+                    name="prioridad"
+                    aria-label="Buscar por prioridad" onchange="this.form.submit()">
+                    <option value="">Todas</option>
+                    <option value="baja" {{ request('prioridad') == 'baja' ? 'selected' : '' }}>Baja</option>
+                    <option value="media" {{ request('prioridad') == 'media' ? 'selected' : '' }}>Media</option>
+                    <option value="alta" {{ request('prioridad') == 'alta' ? 'selected' : '' }}>Alta</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <legend class="group-title">
+                    <strong>Buscar por fechas:</strong>
+                </legend>
+                <div class="date-group">
+                    <label for="start-date">Desde:</label>
+                    <input type="date" name="start_date"
+                        value="{{ request('start_date') }}" onchange="this.form.submit()">
+                    <label for="end-date">Hasta:</label>
+                    <input type="date" name="end_date"
+                        value="{{ request('end_date') }}" onchange="this.form.submit()">
+                </div>
+            </div>
+            <div class="form-group">
+                <!-- Filtro de usuario -->
+                <div>
+                    <input type="checkbox" name="mis_tareas" value="1"
+                        class="form-checkbox text-blue-500"
+                        {{ request('mis_tareas') ? 'checked' : '' }}
+                        onchange="this.form.submit()">
+                    <span class="ml-2 text-gray-700">Mostrar solo mis tareas</span>
+                </div>
+
+            </div>
+
         </form>
+    </section>
 
-        <!-- Filtros -->
-        <form method="GET" action="{{ route('tasks.index') }}" class="mb-4 flex flex-wrap gap-4">
-            <select name="estado" class="border p-2 rounded" onchange="this.form.submit()">
-                <option value="">Filtrar por estado</option>
-                <option value="pendientes" {{ request('estado') == 'pendiente' ? 'selected' : '' }}>Pendiente</option>
-                <option value="completadas" {{ request('estado') == 'completa' ? 'selected' : '' }}>Completa</option>
-            </select>
-
-            <select name="prioridad" class="border p-2 rounded" onchange="this.form.submit()">
-                <option value="">Filtrar por prioridad</option>
-                <option value="baja" {{ request('prioridad') == 'baja' ? 'selected' : '' }}>Baja</option>
-                <option value="media" {{ request('prioridad') == 'media' ? 'selected' : '' }}>Media</option>
-                <option value="alta" {{ request('prioridad') == 'alta' ? 'selected' : '' }}>Alta</option>
-            </select>
-            <!-- Filtro de Fechas -->
-            <input type="date" name="start_date" class="border p-2 rounded"
-                value="{{ request('start_date') }}" onchange="this.form.submit()">
-
-            <input type="date" name="end_date" class="border p-2 rounded"
-                value="{{ request('end_date') }}" onchange="this.form.submit()">
-
-
-            <!-- Filtro de usuario -->
-            <label class="inline-flex items-center">
-                <input type="checkbox" name="mis_tareas" value="1"
-                    class="form-checkbox text-blue-500"
-                    {{ request('mis_tareas') ? 'checked' : '' }}
-                    onchange="this.form.submit()">
-                <span class="ml-2 text-gray-700">Mostrar solo mis tareas</span>
-            </label>
-        </form>
-
-        <!-- Tabla de Tareas -->
-        <table class="w-full border-collapse border border-gray-300">
-            <thead>
-                <tr class="bg-gray-200">
-                    <th class="border px-4 py-2">Creador</th>
-                    <th class="border px-4 py-2">Título</th>
-                    <th class="border px-4 py-2">Descripción</th>
-                    <th class="border px-4 py-2">Fecha de Vencimiento</th>
-                    <th class="border px-4 py-2">Estado</th>
-                    <th class="border px-4 py-2">Prioridad</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($tasks as $task)
-                <tr class="border">
-                    <td>{{ $task->user->name ?? 'Sin asignar' }}</td>
-                    <td class="border px-4 py-2">{{ $task->titulo }}</td>
-                    <td class="border px-4 py-2">{{ $task->descripcion }}</td>
-                    <td class="border px-4 py-2">{{ \Carbon\Carbon::parse($task->fechaVencimiento)->format('d-m-Y') }}</td>
-                    <td class="border px-4 py-2">
-                        <span class="px-2 py-1 text-white rounded 
-                            {{ $task->estado == 'pendientes' ? 'bg-red-500' : '' }}
-                            {{ $task->estado == 'completadas' ? 'bg-green-500' : '' }}">
-                            {{ ucfirst($task->estado) }}
-                        </span>
-                    </td>
-                    <td class="border px-4 py-2">
-                        <span class="px-2 py-1 text-white rounded 
-                            {{ $task->prioridad == 'baja' ? 'bg-gray-500' : '' }}
-                            {{ $task->prioridad == 'media' ? 'bg-yellow-500' : '' }}
-                            {{ $task->prioridad == 'alta' ? 'bg-red-700' : '' }}">
-                            {{ ucfirst($task->prioridad) }}
-                        </span>
-                    </td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="5" class="text-center py-4 text-gray-600">No hay tareas registradas</td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
+    <!-- Lista de Tareas -->
+    <section id="task-list">
+        <h2 class="section-title">Lista de Tareas</h2>
+        <div class="create-task-btn">
+            <a href="create.html" class="btn btn-primary"> Crear Nueva Tarea </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            @forelse($tasks as $task)
+            <ul class="task-card-grid">
+                <li class="task-card">
+                    <div class="task-card-content">
+                        <dl>
+                            <dt>Creador:</dt>
+                            <dd>{{ $task->user->name ?? 'Sin asignar' }}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Título:</dt>
+                            <dd>{{ $task->titulo }}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Descripción:</dt>
+                            <dd>{{ $task->descripcion }}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Fecha de Vencimiento:</dt>
+                            <dd>{{ \Carbon\Carbon::parse($task->fechaVencimiento)->format('d-m-Y') }}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Prioridad:</dt>
+                            <dd>
+                                <span>
+                                    {{ ucfirst($task->prioridad) }}
+                                </span>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>Estado:</dt>
+                            <dd>
+                                <span>
+                                    {{ ucfirst($task->estado) }}
+                                </span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="task-card-actions">
+                        <button type="button" class="edit-btn btn">Editar</button>
+                        <button type="button" class="complete-btn btn">
+                            Marcar como Completada
+                        </button>
+                        <button type="button" class="delete-btn btn">Eliminar</button>
+                    </div>
+                </li>
+            </ul>
+            @empty
+            <dl>
+                <dt>No hay tareas registradas</dt>
+            </dl>
+            @endforelse
+        </div>
         {{-- Paginación con Tailwind --}}
         <div class="mt-4">
             {{ $tasks->links() }}
         </div>
-    </div>
-</x-alt>
+    </section>
+</main>
+
 @endsection
