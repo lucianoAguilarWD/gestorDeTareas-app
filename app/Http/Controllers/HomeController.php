@@ -10,6 +10,7 @@ use App\QueryFilters\PrioridadFilter;
 use App\QueryFilters\FechaVencimientoFilter;
 use App\QueryFilters\OrderByEstadoFilter;
 use App\QueryFilters\UsuarioFilter;
+use App\QueryFilters\Buscador;
 use Illuminate\Pagination\Paginator;
 
 class HomeController extends Controller
@@ -26,6 +27,7 @@ class HomeController extends Controller
                 FechaVencimientoFilter::class,
                 OrderByEstadoFilter::class,
                 UsuarioFilter::class,
+                Buscador::class,
             ])
             ->thenReturn()
             ->paginate(10);
