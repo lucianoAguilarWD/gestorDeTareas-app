@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Gestor De Tareas App')
+@section('title', 'Framework')
 
 @section('content')
-<main>
+
+<main class="mt-6 mb-6 w-full">
     <!-- Filtros de Tareas -->
     <section id="task-filters">
         <h2 class="section-title">Filtrar Tareas</h2>
@@ -86,11 +87,12 @@
         <div>
             <a href="{{route('viewCrearTarea')}}" style="background-color: rgb(3, 148, 148); color: white; padding: 5px; border-radius: 4px"> Crear Nueva Tarea </a>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             @forelse($tasks as $task)
             <ul class="task-card-grid">
                 <li class="task-card">
                     <div class="task-card-content">
+
                         <dl>
                             <dt>Creador:</dt>
                             <dd>{{ $task->user->name ?? 'Sin asignar' }}</dd>
@@ -123,13 +125,14 @@
                                 </span>
                             </dd>
                         </dl>
-                    </div>
-                    <div class="task-card-actions">
-                        <button type="button" class="edit-btn btn">Editar</button>
-                        <button type="button" class="complete-btn btn">
-                            Marcar como Completada
-                        </button>
-                        <button type="button" class="delete-btn btn">Eliminar</button>
+
+                        <div class="task-card-actions">
+                            <button type="button" class="edit-btn btn">Editar</button>
+                            <button type="button" class="complete-btn btn">
+                                Marcar como Completada
+                            </button>
+                            <button type="button" class="delete-btn btn">Eliminar</button>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -145,5 +148,4 @@
         </div>
     </section>
 </main>
-
 @endsection
