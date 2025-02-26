@@ -33,7 +33,7 @@ class LoginController extends Controller
         }
 
         //Si la contraseña no es correcta, regresa al login con un mensaje de error
-        return back()->with('message', 'Email o contraseña incorrectos');
+        return redirect()->back()->with('message', 'Contraseña incorrecta')->withInput();
     }
 
     public function register(Request $request)
