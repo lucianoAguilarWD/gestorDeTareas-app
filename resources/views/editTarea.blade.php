@@ -57,7 +57,7 @@
             @method('PUT')
             <fieldset>
                 <label for="titulo">Titulo *</label>
-                <input type="text" name="titulo" id="titulo" required value="{{ $tarea->titulo }}" />
+                <input type="text" name="titulo" id="titulo" required value="{{ old('titulo', $tarea->titulo) }}" />
                 @error('titulo')
                     <small class="feedback error">{{ $message }}</small>
                 @enderror
@@ -66,7 +66,7 @@
             <fieldset>
                 <label for="fechaVencimiento">Fecha de Vencimiento * </label>
                 <input type="date" name="fechaVencimiento" id="fechaVencimiento" required
-                    value="{{ $tarea->fechaVencimiento }}" />
+                    value="{{ old('fechaVencimiento', $tarea->fechaVencimiento)}}" />
                 @error('fechaVencimiento')
                     <small class="feedback error">{{ $message }}</small>
                 @enderror
@@ -74,7 +74,7 @@
             </fieldset>
             <fieldset>
                 <legend>Prioridad *</legend>
-                @switch($tarea->prioridad)
+                @switch(old('prioridad', $tarea->prioridad))
                     @case('baja')
                         <input type="radio" id="prioridad_baja" name="prioridad" value="baja" checked />
                         <label for="prioridad_baja">Baja</label>
@@ -109,7 +109,7 @@
             </fieldset>
             <fieldset>
                 <label for="descripcion">Descripción</label>
-                <textarea name="descripcion" id="descripcion">{{ $tarea->descripcion }}</textarea>
+                <textarea name="descripcion" id="descripcion">{{ old('descripcion', $tarea->descripcion) }}</textarea>
                 @error('descripcion')
                     <small class="feedback error">{{ $message }}</small>
                 @enderror

@@ -55,7 +55,7 @@ class GestorDeTareasController extends Controller
         $validated = $request->validate([
             'titulo' => 'required|max:255',
             'descripcion' => 'max:1500',
-            'fechaVencimiento' => 'required|date|after_or_equal:today|date_format:Y-m-d',
+            'fechaVencimiento' => 'required|date|date_format:Y-m-d',
             'prioridad' => 'required|in:baja,media,alta',
         ]);
         $tareaModel = new Tarea;
