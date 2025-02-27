@@ -108,63 +108,108 @@
         </header>
 
         @forelse($tasks as $task)
-            <ul>
-                <li>
-                    <section>
-                        <article>
-                            <dl>
-                                <dt>Título:</dt>
-                                <dd>{{ $task->titulo }}</dd>
-                            </dl>
-                            <dl>
-                                <dt>Vencimiento:</dt>
-                                <dd>{{ \Carbon\Carbon::parse($task->fechaVencimiento)->format('d-m-Y') }}</dd>
-                            </dl>
-                            <dl>
-                                <dt>Creador:</dt>
-                                <dd>{{ $task->user->name ?? 'Sin asignar' }}</dd>
-                            </dl>
-                        </article>
-                        <article>
-                            <dl>
-                                <dt>Prioridad:</dt>
-                                <dd>
-                                    <span>
-                                        {{ ucfirst($task->prioridad) }}
-                                    </span>
-                                </dd>
-                            </dl>
-                            <dl>
-                                <dt>Estado:</dt>
-                                <dd>
-                                    <span>
-                                        {{ ucfirst($task->estado) }}
-                                    </span>
-                                </dd>
-                            </dl>
-                        </article>
-                    </section>
-                    <a href="{{ route('edit_tarea', $task->id) }}">Editar</a>
-                    <!-- <form action="" method="post">
-                    <input type="hidden" name="taskId" value="1" />
-                    <button type="button" aria-label="change">Completada</button>
-                </form> -->
-                    @if (Auth::id() == $task->usuario_id)
-                        <form action="{{ route('delete_tarea', $task->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" aria-label="delete"
-                                onclick="return confirm('¿Estás seguro de eliminar esta tarea?')">
-                                Eliminar
+        <ul>
+            <li>
+                <section>
+                    <article>
+                        <dl>
+                            <dt>Título:</dt>
+                            <dd>{{ $task->titulo }}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Vencimiento:</dt>
+                            <dd>{{ \Carbon\Carbon::parse($task->fechaVencimiento)->format('d-m-Y') }}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Creador:</dt>
+                            <dd>{{ $task->user->name ?? 'Sin asignar' }}</dd>
+                        </dl>
+                    </article>
+                    <article>
+                        <dl>
+                            <dt>Prioridad:</dt>
+                            <dd>
+                                <span>
+                                    {{ ucfirst($task->prioridad) }}
+                                </span>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>Estado:</dt>
+                            <dd>
+                                <span>
+                                    {{ ucfirst($task->estado) }}
+                                </span>
+                            </dd>
+                        </dl>
+                    </article>
+                </section>
+                <x-modal>
+                    <x-slot name="icon">
+                        Ver
+                    </x-slot>
+                    <x-slot name="contenido">
+                        <section class="p-4 bg-white shadow-md rounded-lg">
+                            <div class="block">
+                                <article>
+                                    <h3 class="text-lg font-semibold text-gray-700">{{ $task->titulo }}</h3>
+                                    <p class="text-sm text-gray-500">Vence el:
+                                        <span class="font-medium">{{ \Carbon\Carbon::parse($task->fechaVencimiento)->format('d-m-Y') }}</span>
+                                    </p>
+                                    <p class="text-sm text-gray-500">Creador:
+                                        <span class="font-medium">{{ $task->user->name ?? 'Sin asignar' }}</span>
+                                    </p>
+                                    <p class="text-sm text-gray-500" style="word-break:break-all">Descripción:
+                                        <span class="font-medium break-words">{{ $task->descripcion ?? 'Sin descripción' }}</span>
+                                    </p>
+                                    <!-- Columna 2 -->
+
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm font-semibold text-gray-600">Prioridad:</span>
+                                        <span class="px-2 py-1 text-xs font-medium text-white rounded-md 
+                    {{ match($task->prioridad) {
+                        'alta' => 'bg-red-500',
+                        'media' => 'bg-yellow-500',
+                        'baja' => 'bg-green-500',
+                        default => 'bg-gray-400'
+                    } }}">
+                                            {{ ucfirst($task->prioridad) }}
+                                        </span>
+                                    </div>
+
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm font-semibold text-gray-600">Estado:</span>
+                                        <span class="px-2 py-1 text-xs font-medium text-white rounded-md 
+                    {{ $task->estado == 'pendiente' ? 'bg-blue-500' : 'bg-gray-500' }}">
+                                            {{ ucfirst($task->estado) }}
+                                        </span>
+                                    </div>
+                                </article>
+                            </div>
+                            <button type="button" @click="open = false" class="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg  mr-1">
+                                Cerrar
                             </button>
-                        </form>
-                    @endif
-                </li>
-            </ul>
+                        </section>
+                    </x-slot>
+                </x-modal>
+                <a href="{{ route('edit_tarea', $task->id) }}">Editar</a>
+                
+                @if (Auth::id() == $task->usuario_id)
+                <form action="{{ route('delete_tarea', $task->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" aria-label="delete"
+                        onclick="return confirm('¿Estás seguro de eliminar esta tarea?')">
+                        Eliminar
+                    </button>
+                </form>
+                @endif
+            </li>
+        </ul>
         @empty
-            <dl>
-                <dt>No hay tareas registradas</dt>
-            </dl>
+        <dl>
+            <dt>No hay tareas registradas</dt>
+        </dl>
         @endforelse
 
         <!-- Modal -->
