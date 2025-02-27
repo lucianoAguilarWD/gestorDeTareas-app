@@ -65,7 +65,7 @@ class GestorDeTareasController extends Controller
         $tarea->fechaVencimiento = $request->fechaVencimiento;
         $tarea->prioridad = $request->prioridad;
         $tarea->save();
-        return to_route('tasks.index');
+        return to_route('tasks.index')->with('Estado', 'Usuario editado correctamente');
 
     }
 

@@ -121,7 +121,15 @@
         </form>
         <p>
             Para volver a la lista de tareas, hace click
-            <a href="{{ url()->previous() }}">Acá</a>
+            @php
+                $previous = url()->previous();
+                $default = route('tasks.index');
+                $url =
+                    url()->current() !== $previous && str_contains($previous, request()->getHost())
+                        ? $previous
+                        : $default;
+            @endphp
+            <a href="{{ $url }}">Acá</a>
         </p>
     </main>
 </body>
