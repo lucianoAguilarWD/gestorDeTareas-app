@@ -1,4 +1,5 @@
 @import url("./base.css");
+@import url("./elements.css");
 
 /* ==================================================
    General Layout and Main Structure
@@ -35,6 +36,25 @@ main {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
+#task-filters header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 1rem;
+  background-color: #0288d1;
+  margin-bottom: 1rem;
+}
+#task-filters header h2 {
+  color: #fafafa;
+}
+
+#task-filters header a {
+  border: 0.1rem solid #fafafa;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  color: #fafafa;
+}
+
 #task-filters form {
   display: flex;
   flex-direction: column;
@@ -52,8 +72,16 @@ legend {
   font-weight: bold;
   width: 100%;
 }
+#task-filters fieldset:nth-child(1) {
+  gap: 0.5rem;
+}
+#task-filters fieldset:nth-child(1) input {
+  width: auto;
+  accent-color: #03a9f4;
+  margin-left: 0.5rem;
+}
 
-#task-filters fieldset:nth-child(2) label {
+#task-filters fieldset:nth-child(3) label {
   padding: 0.25rem 0.75rem;
   border: 0.1rem solid #212121;
   border-radius: 1rem;
@@ -228,14 +256,15 @@ legend {
   opacity: 0.8;
 }
 
-body > form {
+#toggleFilter {
   display: none;
 }
 
 @media (max-width: 768px) {
   body {
     flex-flow: column-reverse;
-    padding: 0;
+    padding: 3.5rem 0;
+    justify-content: flex-end;
   }
   #task-filters {
     position: fixed;
@@ -252,8 +281,8 @@ body > form {
   }
   #task-list {
     width: 100%;
-    min-height: 100dvh;
-    padding: 3rem 1rem;
+    min-height: calc(75dvh - 6rem);
+    padding: 1rem;
   }
   #task-list ul li {
     flex-flow: row wrap;
@@ -273,16 +302,13 @@ body > form {
     align-items: center;
     flex: auto;
   }
-  body > form {
-    position: fixed;
-    top: 0.25rem;
-    right: 1rem;
+  #toggleFilter {
     z-index: 9;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  #toggleFilter {
+  #toggleFilter button {
     background-color: #0288d1;
     padding: 0.5rem 1.25rem;
     border-radius: 2rem;

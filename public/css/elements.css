@@ -1,0 +1,96 @@
+/* Boton de Logout */
+#btnLogout {
+    z-index: 7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  #btnLogout button {
+    height: 0.4in;
+    aspect-ratio: 1/1;
+    padding: 0.25rem;
+    border-radius: 50%;
+    background-color: #283593;
+    border: 0.1rem solid transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  #btnLogout button svg {
+    width: 100%;
+    height: 100%;
+    fill: #fafafa;
+  }
+  #btnLogout > small {
+    padding: 0.25rem 0.75rem;
+    background-color: #283593;
+    color: #fafafa;
+    border-radius: 1rem;
+  }
+  #btnLogout button:hover {
+    background-color: #fafafa;
+    border-color: #283593;
+  }
+  #btnLogout button:hover svg {
+    fill: #283593;
+  }
+  
+  /*Topbar*/
+  #topbar {
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    box-shadow: 0 0.25rem 0.5rem 0 rgba(12, 12, 12, 0.4);
+    padding: 0.25rem 1rem;
+  }
+  #topbar h1 {
+    flex: 1;
+    background-image: linear-gradient(to left, #03a9f4, #00bcd4);
+    background-clip: text;
+    color: transparent;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-align: center;
+  }
+  /*Copyright*/
+  #copy {
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fafafa;
+    background-image: linear-gradient(to left, #03a9f4, #00bcd4);
+    box-shadow: 0 -0.25rem 0.5rem 0 rgba(12, 12, 12, 0.4);
+    padding: 0.25rem 1rem;
+    gap: 0.25rem;
+  }
+  
+  #copy h3 {
+    color: #fafafa;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-align: center;
+  }
+  
+  #copy p {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fafafa;
+  }
+  #copy p:first-child {
+    padding-left: 0.25rem;
+    border-left: 0.15rem solid #fafafa;
+  }
+  #copy p:last-child {
+    padding-right: 0.25rem;
+    border-right: 0.15rem solid #fafafa;
+  }

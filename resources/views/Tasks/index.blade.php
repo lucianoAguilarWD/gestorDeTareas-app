@@ -10,15 +10,47 @@
 </head>
 
 <body>
+    <header id="topbar">
+        <form action="{{ route('cerrar_sesion') }}" method="POST" id="btnLogout">
+            @csrf
+            <button type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <path
+                        d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h240q17 0 28.5 11.5T480-800q0 17-11.5 28.5T440-760H200v560h240q17 0 28.5 11.5T480-160q0 17-11.5 28.5T440-120H200Zm487-320H400q-17 0-28.5-11.5T360-480q0-17 11.5-28.5T400-520h287l-75-75q-11-11-11-27t11-28q11-12 28-12.5t29 11.5l143 143q12 12 12 28t-12 28L669-309q-12 12-28.5 11.5T612-310q-11-12-10.5-28.5T613-366l74-74Z" />
+                </svg>
+            </button>
+            <small>{{ auth()->user()->name }}</small>
+        </form>
+        <h1>TaskHub</h1>
+        <!-- Filtros de Tareas -->
+        <form id="toggleFilter">
+            <button type="button">Filtro</button>
+        </form>
+    </header>
+    <footer id="copy">
+        <p>&copy;</p>
+        <h3>TaskHub</h3>
+        <p>- 2025</p>
+    </footer>
     <form>
         <button type="button" id="toggleFilter">Filtro</button>
     </form>
     <!-- Filtros de Tareas -->
     <section id="task-filters">
-        <h2>Filtrar Tareas</h2>
-        </form>
+        <header>
+            <h2>Filtrar Tareas</h2>
+            <a href="{{ route('tasks.index') }}">Limpiar Filtros</a>
+        </header>
         <form action="{{ route('tasks.index') }}" method="GET" id="filter-form">
-            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6 mb-6">
+            <fieldset>
+                <legend>Asignadas</legend>
+                <input type="checkbox" name="mis_tareas" value="1"
+                    {{ request('mis_tareas') ? 'checked' : '' }}
+                    onchange="this.form.submit()">
+                <label for="assigned">Mis tareas</label>
+            </fieldset>
+
+            <fieldset>
                 <legend>Buscar por título</legend>
                 <input
                     type="text"
@@ -28,7 +60,8 @@
                     aria-label="Buscar por título"
                     value="{{ request('query') }}" />
                 <button type="submit">Buscar</button>
-            </div>
+            </fieldset>
+
             <fieldset>
                 <legend>Buscar por estado:</legend>
                 <div class="radio-group">
@@ -37,9 +70,9 @@
                         onchange="this.form.submit()" />
                     <label for="all">Todas</label>
 
-                        <input type="radio" id="pendientes" name="estado" value="pendiente"
-                            {{ request('estado') == 'pendiente' ? 'checked' : '' }} onchange="this.form.submit()" />
-                        <label for="pendientes">Pendientes</label>
+                    <input type="radio" id="pendientes" name="estado" value="pendiente"
+                        {{ request('estado') == 'pendiente' ? 'checked' : '' }} onchange="this.form.submit()" />
+                    <label for="pendientes">Pendientes</label>
 
                     <input type="radio" id="completadas" name="estado" value="completada"
                         {{ request('estado') == 'completada' ? 'checked' : '' }}
@@ -70,14 +103,7 @@
                 <input type="date" name="end_date"
                     value="{{ request('end_date') }}" aria-label="Fecha hasta" onchange="this.form.submit()">
             </fieldset>
-            <!-- Filtro de usuario -->
-            <div>
-                <input type="checkbox" name="mis_tareas" value="1"
-                    {{ request('mis_tareas') ? 'checked' : '' }}
-                    onchange="this.form.submit()">
-                <span class="ml-2 text-gray-700">Mis tareas</span>
-            </div>
-            <a href="{{ route('tasks.index') }}" class="px-4 py-2 bg-gray-300 rounded">Limpiar filtros</a>
+
         </form>
         {{-- Paginación con Tailwind --}}
         <div class="mt-4">
