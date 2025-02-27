@@ -53,7 +53,7 @@
                 <legend>Buscar por prioridad:</legend>
                 <select
                     id="priority-filter"
-                    name="priority"
+                    name="prioridad"
                     aria-label="Buscar por prioridad" onchange="this.form.submit()">
                     <option value="">Todas</option>
                     <option value="baja" {{ request('prioridad') == 'baja' ? 'selected' : '' }}>Baja</option>
@@ -77,9 +77,9 @@
                 <input type="checkbox" name="mis_tareas" value="1"
                     {{ request('mis_tareas') ? 'checked' : '' }}
                     onchange="this.form.submit()">
-                <span class="ml-2 text-gray-700">Mostrar solo mis tareas</span>
+                <span class="ml-2 text-gray-700">Mis tareas</span>
             </div>
-            <button type="submit" id="apply-filters">Limpiar Filtros</button>
+            <a href="{{ route('tasks.index') }}" class="px-4 py-2 bg-gray-300 rounded">Limpiar filtros</a>
         </form>
         {{-- Paginación con Tailwind --}}
         <div class="mt-4">
@@ -91,6 +91,7 @@
             <h2 class="section-title">Lista de Tareas</h2>
             <a href="{{route('viewCrearTarea')}}" class="btn btn-primary"> Crear Nueva Tarea </a>
         </header>
+        
         @forelse($tasks as $task)
         <ul>
             <li>
