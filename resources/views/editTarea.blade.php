@@ -158,8 +158,8 @@
     </main> --}}
     <main class="mt-8 mb-8">
         <header>
-            <h1>Crea tu nueva tarea en <span class="highlight">TaskHub</span></h1>
-            <p>Rellena el formulario para crear tus tareas</p>
+            <h1>Editar tu tarea en <span class="highlight">TaskHub</span></h1>
+            <p>Rellena el formulario para editar tareas</p>
         </header>
         <form action="{{ route('change_estado', $tarea->id) }}" method="post">
             @csrf
@@ -241,7 +241,7 @@
                 @enderror
             </fieldset>
 
-            <button type="submit" class="btn-submit">Guardar Tarea</button>
+            <button type="submit" class="btn-submit">Editar Tarea</button>
         </form>
 
         <p class="return-link">

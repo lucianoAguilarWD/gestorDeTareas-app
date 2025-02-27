@@ -26,7 +26,7 @@ class GestorDeTareasController extends Controller
         $tarea->prioridad = $request->prioridad;
         $tarea->usuario_id = Auth::id();
         $tarea->save();
-        return to_route('tasks.index');
+        return to_route('tasks.index')->with('message', 'Tarea creada correctamente');
     }
 
 
@@ -66,7 +66,7 @@ class GestorDeTareasController extends Controller
         $tarea->prioridad = $request->prioridad;
         $tarea->save();
         $filtros = session()->get('filtros') ?? [];
-        return redirect()->to('/?' . http_build_query($filtros))->with('Estado', 'Usuario editado correctamente');
+        return redirect()->to('/?' . http_build_query($filtros))->with('message', 'Tarea editada correctamente');
         // return to_route('tasks.index')->with('Estado', 'Usuario editado correctamente');
 
     }
@@ -81,6 +81,6 @@ class GestorDeTareasController extends Controller
             $tarea->estado = 'pendiente';
         }
         $tarea->save();
-        return to_route('tasks.index');
+        return to_route('tasks.index')->with('message', 'Tarea editada correctamente');
     }
 }
