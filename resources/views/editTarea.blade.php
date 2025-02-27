@@ -49,7 +49,7 @@
             @if ($tarea->estado == 'pendiente')
                 <button type="submit" class="complete-btn">Completar</button>
             @else
-                <button type="submit" class="edit-btn">Volver a pendiente</button>
+                <button type="submit" class="edit-btn">Cambiar a pendiente</button>
             @endif
         </form>
         <form action="{{ route('update_tarea', $tarea->id) }}" method="post">
