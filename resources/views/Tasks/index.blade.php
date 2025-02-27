@@ -38,10 +38,9 @@
                         onchange="this.form.submit()" />
                     <label for="all">Todas</label>
 
-                    <input type="radio" id="pendientes" name="estado" value="pendiente"
-                        {{ request('estado') == 'pendiente' ? 'checked' : '' }}
-                        onchange="this.form.submit()" />
-                    <label for="pendientes">Pendientes</label>
+                        <input type="radio" id="pendientes" name="estado" value="pendiente"
+                            {{ request('estado') == 'pendiente' ? 'checked' : '' }} onchange="this.form.submit()" />
+                        <label for="pendientes">Pendientes</label>
 
                     <input type="radio" id="completadas" name="estado" value="completada"
                         {{ request('estado') == 'completada' ? 'checked' : '' }}
