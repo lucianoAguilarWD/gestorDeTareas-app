@@ -81,6 +81,7 @@ class GestorDeTareasController extends Controller
             $tarea->estado = 'pendiente';
         }
         $tarea->save();
-        return to_route('tasks.index')->with('message', 'Tarea editada correctamente');
+        $filtros = session()->get('filtros') ?? [];
+        return redirect()->to('/?' . http_build_query($filtros))->with('message', 'Tarea editada correctamente');
     }
 }
