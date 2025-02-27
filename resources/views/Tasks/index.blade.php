@@ -127,7 +127,7 @@
                         </dl>
                     </div>
                     <div class="task-card-actions">
-                        <button type="button" class="edit-btn btn">Editar</button>
+                        <a href="{{ route('edit_tarea', $task->id) }}"><button type="button" class="edit-btn btn">Editar</button></a>
                         <button type="button" class="complete-btn btn">
                             Marcar como Completada
                         </button>
