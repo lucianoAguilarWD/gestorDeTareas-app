@@ -13,7 +13,7 @@ class GestorDeTareasController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'titulo' => 'required|max:255',
+            'titulo' => 'required|max:99',
             'descripcion' => 'max:1500',
             'fechaVencimiento' => 'required|date|after_or_equal:today|date_format:Y-m-d',
             'prioridad' => 'required|in:baja,media,alta',
@@ -54,7 +54,7 @@ class GestorDeTareasController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
-            'titulo' => 'required|max:255',
+            'titulo' => 'required|max:99',
             'descripcion' => 'max:1500',
             'fechaVencimiento' => 'required|date|date_format:Y-m-d',
             'prioridad' => 'required|in:baja,media,alta',
