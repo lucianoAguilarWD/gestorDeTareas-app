@@ -14,6 +14,7 @@ Route::middleware("auth")->group(function () {
     Route::post('/postCreateTarea', [GestorDeTareasController::class, 'store'])->name('create_tarea');
     Route::delete('/deleteTarea/{id}', [GestorDeTareasController::class, 'destroy'])->name('delete_tarea');
     Route::put('/updateTarea/{id}', [GestorDeTareasController::class, 'update'])->name('update_tarea');
+    Route::put('/cambiarEstadoTarea/{id}', [GestorDeTareasController::class, 'cambiarEstado'])->name('change_estado');
     Route::get('/', [HomeController::class, 'index'])->name('tasks.index');
 });
 
