@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace App\QueryFilters;
 
 use Closure;
@@ -8,7 +9,8 @@ class OrderByEstadoFilter
 {
     public function handle(Builder $query, Closure $next)
     {
-        $query->orderByRaw("FIELD(estado, 'pendientes', 'completadas')");
+        $query->orderByRaw("FIELD(estado, 'pendiente', 'completada')")
+            ->orderBy('created_at', 'desc');
 
         return $next($query);
     }
