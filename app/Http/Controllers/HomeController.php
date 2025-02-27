@@ -33,7 +33,7 @@ class HomeController extends Controller
             ->paginate(4)
             ->appends($request->query());
 
-
+        session()->put('filtros', $request->all());
         return view('Tasks.index', compact('tasks'));
     }
 }

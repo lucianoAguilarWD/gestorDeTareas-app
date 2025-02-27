@@ -1,4 +1,5 @@
 @import url("./base.css");
+@import url("./elements.css");
 
 body {
   display: flex;
@@ -7,9 +8,10 @@ body {
   justify-content: center;
   min-height: 100vh;
   margin: 0;
+  background-color: #f4f6f9;
 }
 
-main {
+body > main {
   overflow: hidden;
   border-radius: 1rem;
   box-shadow: 0 0 0.25rem 0 rgba(15, 20, 73, 0.4);
@@ -17,29 +19,31 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1.5rem;
   max-width: 600px;
-  width: 100%;
+  width: 90%;
   background-color: #fff;
 }
 
-main header {
+body > main header {
   width: 100%;
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.5rem;
   background-color: #1a237e;
   text-align: center;
+  border-radius: 0.5rem;
 }
 
-main header h1 {
+body > main header h1 {
   color: #fafafa;
   font-weight: 700;
   margin: 0;
+  font-size: 1.5rem;
 }
 
-main header h1 span {
+body > main header h1 span {
   background-image: linear-gradient(to left, #03a9f4, #00bcd4);
   background-clip: text;
   color: transparent;
@@ -48,13 +52,13 @@ main header h1 span {
   font-weight: 900;
 }
 
-main header p {
+body > main header p {
   color: #fafafa;
   font-weight: 400;
   margin: 0;
 }
 
-main form {
+#task-form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -62,20 +66,19 @@ main form {
   padding: 1rem;
 }
 
-main form fieldset {
+#task-form fieldset {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   border: none;
 }
 
-main form label {
+#task-form label {
   font-weight: 600;
   color: #1a237e;
 }
 
-main form input,
-main form textarea {
+#task-form input {
   width: 100%;
   padding: 0.5rem;
   border: 0.1rem solid #03a9f4;
@@ -83,41 +86,78 @@ main form textarea {
   outline: none;
   transition: border-color 0.3s ease-in-out;
 }
+#task-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 0.1rem solid #03a9f4;
+  border-radius: 0.5rem;
+  outline: none;
+  min-height: 120px;
+  resize: none;
+  transition: border-color 0.3s ease-in-out;
+}
 
-main form input:focus,
-main form textarea:focus {
+#task-form input:focus,
+#task-form textarea:focus {
   border-color: #0288d1;
 }
 
-main form textarea {
-  min-height: 100px;
-  resize: vertical;
+#task-form fieldset:has(input[type="radio"]) {
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-main form input[type="radio"] {
-  width: auto;
-  margin-right: 0.5rem;
+#task-form fieldset:has(input[type="radio"]) legend {
+  width: 100%;
+  color: #1a237e;
+  font-weight: 600;
 }
 
-main form legend {
+#task-form fieldset:has(input[type="radio"]) label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  border: 0.1rem solid #03a9f4;
+  color: #03a9f4;
+  border-radius: 2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+#task-form fieldset:has(input[type="radio"]) input[type="radio"] {
+  display: none;
+}
+
+#task-form
+  fieldset:has(input[type="radio"])
+  input[type="radio"]:checked
+  + label {
+  border-color: transparent;
+  background-color: #03a9f4;
+  color: #fafafa;
+}
+
+.task-form legend {
   font-weight: 600;
   color: #1a237e;
 }
 
-main form button {
+.btn-submit {
   align-self: center;
-  padding: 0.5rem 1.5rem;
+  padding: 0.7rem 2rem;
   background-color: #03a9f4;
   color: #fafafa;
   font-size: 1rem;
   border: none;
   border-radius: 2rem;
   cursor: pointer;
-  transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out, transform 0.2s ease;
 }
 
-main form button:hover {
+.btn-submit:hover {
   background-color: #0288d1;
+  transform: scale(1.05);
 }
 
 .feedback {
@@ -138,26 +178,31 @@ main form button:hover {
   color: #fafafa;
 }
 
-main > p {
+.return-link {
   text-align: center;
 }
 
-main > p a {
+.return-link a {
   color: #03a9f4;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
 
-main > p a:hover {
+.return-link a:hover {
   color: #0288d1;
 }
 
-@media (max-width: 1280px) {
-  body {
+@media (max-width: 768px) {
+  .container {
     padding: 1rem;
   }
-  main {
-    max-width: 100%;
+
+  .header h1 {
+    font-size: 1.3rem;
+  }
+
+  .header .highlight {
+    font-size: 1.3rem;
   }
 }
