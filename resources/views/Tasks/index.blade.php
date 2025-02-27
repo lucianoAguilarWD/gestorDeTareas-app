@@ -16,20 +16,19 @@
     <!-- Filtros de Tareas -->
     <section id="task-filters">
         <h2>Filtrar Tareas</h2>
-
-        <form action="{{ route('tasks.index') }}" method="GET">
-            <legend>Buscar por título</legend>
-            <input
-                type="text"
-                id="keyword"
-                name="query"
-                placeholder="Introduce el título..."
-                aria-label="Buscar por título"
-                value="{{ request('query') }}" />
-            <button type="submit">Buscar</button>
         </form>
         <form action="{{ route('tasks.index') }}" method="GET" id="filter-form">
-
+            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6 mb-6">
+                <legend>Buscar por título</legend>
+                <input
+                    type="text"
+                    id="keyword"
+                    name="query"
+                    placeholder="Introduce el título..."
+                    aria-label="Buscar por título"
+                    value="{{ request('query') }}" />
+                <button type="submit">Buscar</button>
+            </div>
             <fieldset>
                 <legend>Buscar por estado:</legend>
                 <div class="radio-group">
@@ -91,7 +90,7 @@
             <h2 class="section-title">Lista de Tareas</h2>
             <a href="{{route('viewCrearTarea')}}" class="btn btn-primary"> Crear Nueva Tarea </a>
         </header>
-        
+
         @forelse($tasks as $task)
         <ul>
             <li>
