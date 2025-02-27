@@ -36,7 +36,8 @@ class GestorDeTareasController extends Controller
         $tarea = $tareaModel->find($id);
         if ($tarea->usuario_id == Auth::id()) {
             $tarea->delete();
-            return to_route('tasks.index')->with('message', 'Tarea eliminada correctamente');
+            $filtros = session()->get('filtros') ?? [];
+            return  redirect()->to('/?' . http_build_query($filtros))->with('message', 'Tarea eliminada correctamente');
         } else {
             return to_route('tasks.index');
         }
