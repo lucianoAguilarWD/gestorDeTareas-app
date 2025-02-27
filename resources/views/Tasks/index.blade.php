@@ -128,7 +128,7 @@
                         </dl>
                     </article>
                 </section>
-                <a href="editar.html">Editar</a>
+                <a href="{{ route('edit_tarea', $task->id) }}">Editar</a>
                 <!-- <form action="" method="post">
                     <input type="hidden" name="taskId" value="1" />
                     <button type="button" aria-label="change">Completada</button>
@@ -149,7 +149,7 @@
             <dt>No hay tareas registradas</dt>
         </dl>
         @endforelse
-        
+
     </main>
     <script type="module">
         const toggleFilter = document.querySelector("#toggleFilter");
