@@ -30,7 +30,8 @@ class HomeController extends Controller
                 Buscador::class,
             ])
             ->thenReturn()
-            ->paginate(6);
+            ->paginate(4)
+            ->appends($request->query());
 
 
         return view('Tasks.index', compact('tasks'));
