@@ -7,6 +7,7 @@
     <title>TaskHub | Gestión de Tareas</title>
     <link rel="stylesheet" href="{{ asset('css/list.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 
 <body>
@@ -174,6 +175,15 @@
             <dt>No hay tareas registradas</dt>
         </dl>
         @endforelse
+
+        <!-- Modal -->
+        <div x-data="{ open: {{ session('message') ? 'true' : 'false' }} }" x-show="open" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-lg font-semibold">Mensaje</h2>
+                <p class="mt-2">{{ session('message') }}</p>
+                <button @click="open = false" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Aceptar</button>
+            </div>
+        </div>
 
     </main>
     <script type="module">
