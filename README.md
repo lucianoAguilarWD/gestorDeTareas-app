@@ -6,7 +6,7 @@
 |-------------------------|----------------|
 | 🔹 **Backend**         | [Luciano Aguilar](https://github.com/lucianoAguilarWD) <br> [Mateo Avellaneda](https://github.com/MateoAvellaneda) |
 | 🎨 **Frontend**        | [Mauro Lopez](https://github.com/MauroEmilianoLopez) |
-| 📝 **Documentación & Testing** | [ Juan Pablo](https://github.com/JuanPabloCarrizo) |
+| 📝 **Documentación & Testing** | [ Juan Pablo Carrizo ](https://github.com/JuanPabloCarrizo) |
 
 
 * [2025]
