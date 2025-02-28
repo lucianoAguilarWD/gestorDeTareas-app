@@ -1,9 +1,9 @@
 # gestorDeTareas-app - Aplicación web para gestionar tareas
-Desarrollado por [Aguilar Luciano, Avellaneda Mateo, Mauro Mauro y Juan Pablo]
 
-Backend: [Luciano](https://github.com/lucianoAguilarWD) y Mateo.
-Frontend: Mauro
-Documentación y testing: Juan Pablo
+👥 Desarrollado por
+🔹 Backend: [Luciano Aguilar](https://github.com/lucianoAguilarWD/lucianoAguilarWD) & [Mateo Avellaneda](https://github.com/MateoAvellaneda)
+🔹 Frontend: [Mauro Lopez](https://github.com/MauroEmilianoLopez)
+🔹 Documentación & Testing: [Juan Pablo](https://github.com/JuanPabloCarrizo)
 
 * [2025]
 
